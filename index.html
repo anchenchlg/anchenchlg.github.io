@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Document</title>
+  <link rel="stylesheet" href="style/index.css">
+</head>
+<body>
+  <div id="blog-main">
+    <header>
+      <div id="header-content">
+          <a href="#" id="header-logo">
+            <img id="logo-img" src="images/logo.png" alt="logo">
+            <span>My Blog</span>
+          </a>
+          <nav> 
+            <ul id="header-navigator">
+              <li><a class="navigator" href="#">首页</a></li>
+              <li><a class="navigator" href="#">分类</a></li>
+              <li><a class="navigator" href="#">下载</a></li>
+              <li><a class="navigator" href="#">关于</a></li>
+              <li><a class="navigator" href="#">更多</a></li>
+            </ul>
+            <form id="header-search">
+              <input type="text" placeholder="search">
+              <button type="submit"></button>
+            </form>
+            <div id="header-login">
+              <a href="#">Login</a>
+            </div>
+          </nav>
+       </div>
+    </header>
+    <main>
+      <div id="main-content">
+        <div id="main-left">
+          <div id="banner">
+            <div id="banner-img">
+              <div class="img-item"><img src="images/banner1.png" alt="banner"></div>
+              <div class="img-item"><img src="images/banner2.png" alt="banner"></div>
+              <div class="img-item"><img src="images/banner3.png" alt="banner"></div>
+              <div class="img-item"><img src="images/banner4.png" alt="banner"></div>
+              <div class="img-item"><img src="images/banner5.png" alt="banner"></div>
+            </div>
+            <div id="toggle-botton">
+              <div id="left-botton">&lt;</div>
+              <div id="right-botton">&gt;</div>
+            </div>
+          </div>
+            <div id="article-sort">
+              <a id="" href="#">全部文章</a>
+              <a id="" href="#">热门文章</a>
+              <a id="" href="#">评论最多</a>
+              <a id="" href="#">喜欢最多</a>
+          </div>  
+          <section id="article-list">
+            
+          </section>
+        </div>
+        <div id="main-right">
+          <div id="about-me">
+            <img src="images/user1.png" alt="user">
+            <p id="introduction">This is a brief introduction about me. Welcome to my blog!</p>
+            <div id="count">
+              <div class="count-item">
+                <p>10000</p>
+                <p>评论数</p>
+              </div>
+              <div class="count-item">
+                <p>10000</p>
+                <p>文章数</p>
+              </div>
+            </div>
+            <div id="hot">
+                <p>文章分类、详情待开发</p>
+                <p>文章编辑器待开发</p>
+                <p>关于未开发</p>
+            </div>
+          </div>
+          <div id="category">
+            <p id="category-title">文章分类</p>
+          </div>
+        </div>
+      </div>
+      <div id = "next-top"><a href="#banner">🚀</a></div>
+    </main>
+    <footer>
+      <div id="footer-content">
+        <div id="issue">
+          <span>Copyright©2022 XiYoung</span>
+        </div>
+        <div id="record-filing">
+          <p>ICP备XXXXXXXXX号</p>
+          <p>公网安备XXXXXXXXX号</p>
+        </div>
+        
+    </footer>
+  </div>
+  <script src="script/banner.js"></script>
+  <script src="script/section.js"></script>  
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+</body>
+</html> 
