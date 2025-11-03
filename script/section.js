@@ -41,7 +41,7 @@ const renderArticleList = (articles) => {
           <img src="#" alt="thumbnail">
         </div>
         <div class="article-content-box">
-          <span class="article-title">${article.title}</span>
+          <a href="#"><span class="article-title">${article.title}</span></a>
           <p class="article-summary">${article.content}</p>
           <div class="article-meta">
             <span>👤${article.author.name}/📅${article.publishDate}/👁️${article.views}/💬${article.comments}/❤️${article.likes}</span>
@@ -85,6 +85,7 @@ const updateCategoryList = () => {
   for (const [category, count] of Object.entries(categoryCountMap)) {
     categoryLinksHtml += `<a href="#">${category}(${count})</a>`;
   }
+  categoryListContainer.innerHTML = "";
   categoryListContainer.insertAdjacentHTML('beforeend', categoryLinksHtml);
 };
 
