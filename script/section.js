@@ -1,10 +1,10 @@
 const articleListContainer = document.getElementById('article-list');
-let articleListHtml = '';
 const categoryListContainer = document.getElementById('category');
 let allArticles = [];
 let currentPageIndex = 0;
 const ARTICLES_PER_PAGE = 10;
 
+//请求并加载数据，渲染文章列表
 const fetchAndRenderArticles = async () => {
   try {
     const response = await fetch("./data/section.json");
@@ -24,6 +24,7 @@ const fetchAndRenderArticles = async () => {
   }
 };
 
+//转义html
 const escapeHtml = (html) => {
   return html
     .replace(/&/g, '&amp;')
@@ -33,7 +34,9 @@ const escapeHtml = (html) => {
     .replace(/'/g, '&#039;');
 };
 
+//文章渲染
 const renderArticleList = (articles) => {
+  let articleListHtml = '';
   articles.forEach(article => {
     articleListHtml += `
       <div class="article-item">
@@ -51,9 +54,11 @@ const renderArticleList = (articles) => {
       </div>
     `;
   });
+  articleListContainer.innerHTML = "";
   articleListContainer.insertAdjacentHTML('beforeend', articleListHtml);
 };
 
+//数据分页处理
 const loadNextPageOfArticles = () => {
   const startIndex = currentPageIndex * ARTICLES_PER_PAGE;
   const endIndex = startIndex + ARTICLES_PER_PAGE;
@@ -73,6 +78,26 @@ const loadNextPageOfArticles = () => {
   }
 };
 
+//排序功能
+const sortArticles = (key) => {
+  const sortedArticles = [...allArticles].sort((a, b) => {
+    let aVal = a[key];
+    let bVal = b[key];
+
+    if (key === 'publishDate') {
+      aVal = new Date(aVal).getTime();
+      bVal = new Date(bVal).getTime();
+    }
+
+  if (aVal > bVal) return -1;
+  if (aVal < bVal) return 1;
+  return 0; 
+  })
+  renderArticleList(sortedArticles);
+}
+
+
+//动态添加分类
 const updateCategoryList = () => {
   const categoryCountMap = {};
   let categoryLinksHtml = '';
