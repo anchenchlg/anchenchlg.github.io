@@ -16,7 +16,7 @@
           </a>
           <nav> 
             <ul id="header-navigator">
-              <li><a class="navigator" href="#">首页</a></li>
+              <li><a class="navigator" id="home" href="#">首页</a></li>
               <li><a class="navigator" href="#">分类</a></li>
               <li><a class="navigator" href="#">下载</a></li>
               <li><a class="navigator" href="#">关于</a></li>
@@ -49,10 +49,10 @@
             </div>
           </div>
             <div id="article-sort">
-              <a id="new-article" href="#" onclick="sortArticles('publishDate')">最新文章</a>
-              <a id="hot-article" href="#" onclick="sortArticles('views')">热门文章</a>
-              <a id="comments-most" href="#" onclick="sortArticles('comments')">评论最多</a>
-              <a id="links-most" href="#" onclick="sortArticles('likes')">喜欢最多</a>
+              <a id="new-article" class="sort-btn active" data-key="publishDate" onclick="sortArticles('publishDate')">最新文章</a>
+              <a id="hot-article" class="sort-btn" data-key="views" onclick="sortArticles('views')">热门文章</a>
+              <a id="comments-most" class="sort-btn" data-key="comments" onclick="sortArticles('comments')">评论最多</a>
+              <a id="links-most" class="sort-btn" data-key="likes" onclick="sortArticles('likes')">喜欢最多</a>
           </div>  
           <section id="article-list">
             
@@ -73,7 +73,7 @@
               </div>
             </div>
             <div id="hot">
-                <p>文章分类、详情待开发</p>
+                <p>文章详情待开发</p>
                 <p>文章编辑器待开发</p>
                 <p>关于未开发</p>
             </div>

@@ -3,6 +3,8 @@ const categoryListContainer = document.getElementById('category');
 let allArticles = [];
 let currentPageIndex = 0;
 const ARTICLES_PER_PAGE = 10;
+let currentSortKey = null;
+const sortButtons = document.querySelectorAll('.sort-btn');
 
 //请求并加载数据，渲染文章列表
 const fetchAndRenderArticles = async () => {
@@ -18,6 +20,8 @@ const fetchAndRenderArticles = async () => {
     `);
     
     document.getElementById('load-more').addEventListener('click', loadNextPageOfArticles);
+    document.getElementById("banner").style.display = "flex";
+    document.getElementById("article-sort").style.display = "flex";
   } catch (err) {
     articleListContainer.innerHTML = '<p id="article-err">加载失败，请刷新重试</p>';
     categoryListContainer.style.display = 'none';
@@ -96,6 +100,15 @@ const sortArticles = (key) => {
   renderArticleList(sortedArticles);
 }
 
+sortButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const key = button.dataset.key;
+    sortArticles(key);
+    sortButtons.forEach(btn => btn.classList.remove('active'));
+    button.classList.add('active');
+    console.log(key);
+  })
+})
 
 //动态添加分类
 const updateCategoryList = () => {
@@ -108,12 +121,33 @@ const updateCategoryList = () => {
   }
 
   for (const [category, count] of Object.entries(categoryCountMap)) {
-    categoryLinksHtml += `<a href="#">${category}(${count})</a>`;
+    categoryLinksHtml += `<span><a href="#" class="category-btn" data-category="${category}">${category}</a>(${count})</span>`;
   }
   categoryListContainer.innerHTML = "";
   categoryListContainer.insertAdjacentHTML('beforeend', categoryLinksHtml);
+
+  document.querySelectorAll('.category-btn').forEach(button => {
+    button.addEventListener('click', e => {
+      e.preventDefault();
+      const category = button.dataset.category;
+      filterArticlesByCategory(category);
+    })
+  })
 };
+
+const filterArticlesByCategory  = (category) => {
+  document.getElementById("banner").style.display = "none";
+  document.getElementById("article-sort").style.display = "none";
+  const filtered = allArticles.filter(article => article.category === category);
+  renderArticleList(filtered)
+}
 
 document.addEventListener('DOMContentLoaded', () => {
   fetchAndRenderArticles();
+  sortArticles('publishDate')
+  document.getElementById("home").addEventListener("click", fetchAndRenderArticles)
 });
+
+
+
+

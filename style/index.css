@@ -179,7 +179,12 @@ main{
   text-align: center;
   padding: 8px 15px;
   font-weight: bold;
-  color: #787878;
+  color: #5a5a5a;
+}
+.active{
+  color: #000000;
+  border-bottom: #676767 2px solid;
+  font-weight: bold;
 }
 #article-list{
   display: flex;
