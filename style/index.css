@@ -237,6 +237,7 @@ main{
   content: "📂 ";
 }
 #load-more{
+  display: none;
   width: 120px;
   height: 40px;
   margin: 20px auto;
